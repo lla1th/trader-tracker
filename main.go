@@ -7,6 +7,13 @@ import (
 
 type TrustLevel int
 
+const (
+	TrustUnknown TrustLevel = iota
+	TrustUntrusted
+	TrustNeutral
+	TrustTrusted
+)
+
 type Trader struct {
 	SteamID string
 	Nickname string
@@ -20,5 +27,18 @@ type BanInfo struct {
 }
 
 func main() {
-	fmt.Println("Hello world!")
+	fmt.Println("Start")
+}
+
+func (t TrustLevel) String() string {
+	switch t {
+		case TrustUntrusted:
+			return "untrusted"
+		case TrustNeutral:
+			return "neutral"
+		case TrustTrusted:
+			return "trusted"
+		default:
+			return "unknown"
+	}
 }
